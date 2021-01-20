@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -16,37 +17,37 @@ namespace OA.Repositories
         }
         public void Delete(TEntity entity)
         {
-           //var entityToDelete = 
+            _db.Set<TEntity>().Remove(entity);
         }
 
-        public long DeleteMany(IEnumerable<TEntity> entities)
+        public void DeleteMany(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            _db.Set<TEntity>().RemoveRange(entities);
         }
 
         public ICollection<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _db.Set<TEntity>().ToList();
         }
 
         public ICollection<TEntity> GetByCondition(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+           return _db.Set<TEntity>().Where(predicate).ToList();
         }
 
         public TEntity GetOne(int id)
         {
-            throw new NotImplementedException();
+           return _db.Set<TEntity>().Find(id);
         }
 
-        public long Insert(TEntity entity)
+        public void Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            _db.Set<TEntity>().Add(entity);
         }
 
-        public long InsertMany(IEnumerable<TEntity> entities)
+        public void InsertMany(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            _db.Set<TEntity>().AddRange(entities);
         }
     }
 }

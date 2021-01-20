@@ -10,9 +10,9 @@ namespace OA.Repositories
         TEntity GetOne(int id);
         ICollection<TEntity> GetAll();
         ICollection<TEntity> GetByCondition(Expression<Func<TEntity, bool>> predicate);
-        long Insert(TEntity entity);
+        void Insert(TEntity entity);
         void Delete(TEntity entity);
-        long InsertMany(IEnumerable<TEntity> entities);
-        long DeleteMany(IEnumerable<TEntity> entities);
+        void InsertMany(IEnumerable<TEntity> entities);
+        void DeleteMany(IEnumerable<TEntity> entities);
     }
 }
