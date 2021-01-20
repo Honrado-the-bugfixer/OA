@@ -8,22 +8,22 @@ using System.Text;
 
 namespace OA.Repositories.Repositories
 {
-    public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
+    public class AdminRepository : Repository<Admin>, IAdminRepository
     {
         private readonly DbContext _db;
 
-        public EmployeeRepository(DbContext db) : base(db)
+        public AdminRepository(DbContext db) : base(db)
         {
             _db = db;
         }
-        public IEnumerable<Employee> GetEmployeesWithSupervisor()
+        public IEnumerable<Admin> GetAdminWithEmployees()
         {
-            return _db.Set<Employee>().Include(e => e.Supervisor).ToList();
+            return _db.Set<Admin>().Include(e => e.Employees).ToList();
         }
 
-        public Employee GetEmployeeWithSupervisor(int id)
+        public Admin GetAdminWithEmployees(int id)
         {
-            return _db.Set<Employee>().Include(e => e.Supervisor).FirstOrDefault(e => e.Id == id);
+            return _db.Set<Admin>().Include(e => e.Employees).FirstOrDefault(e => e.Id == id);
         }
     }
 }
