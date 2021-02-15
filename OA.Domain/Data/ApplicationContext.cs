@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OA.Domain.Data
 {
-   public class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -15,4 +15,5 @@ namespace OA.Domain.Data
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Employee> Employees { get; set; }
     }
+
 }

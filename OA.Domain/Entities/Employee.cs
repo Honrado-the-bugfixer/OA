@@ -5,11 +5,13 @@ using System.Text;
 
 namespace OA.Domain.Entities
 {
-   public  class Employee : BaseEntity
+    public class Employee : BaseEntity
     {
         [ForeignKey("Admin")]
         public int SupervisorId { get; set; }
         public Admin Supervisor { get; set; }
         public string Salary { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; }
     }
 }
